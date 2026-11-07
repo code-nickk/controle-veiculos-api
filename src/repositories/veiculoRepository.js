@@ -39,8 +39,8 @@ class VeiculoRepository {
         );
     }
 
-    // Remove um veiculo com base no seu id da lista
-    remover(id) {
+    // Excluir um veiculo com base no seu id da lista
+    excluir(id) {
      this.veiculos = this.veiculos.filter(veiculo => veiculo.id !== id);
     }
 }

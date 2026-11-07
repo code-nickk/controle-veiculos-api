@@ -117,10 +117,10 @@ class VeiculoService {
         return veiculo;
     }
 
-    // Remove um veículo; lança erro 404 se ele não existir
-    remover(id) {
+    // Excluir um veículo; lança erro 404 se ele não existir
+    excluir(id) {
         this.buscarPorId(id);
-        this.repository.remover(id);
+        this.repository.excluir(id);
     }
 }
 

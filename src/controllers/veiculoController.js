@@ -37,6 +37,55 @@ class VeiculoController {
             next(erro);
         }
     };
+
+
+    // POST /veiculos
+    criar = (req, res, next) => {
+        try {
+            const veiculo = this.service.criar(req.body);
+
+            res.status(201).json(veiculo);
+        } catch (erro) {
+            next(erro);
+        }
+    };
+
+    // PUT /veiculos/:id
+    atualizar = (req, res, next) => {
+        try {
+            const id = Number(req.params.id);
+
+            if (isNaN(id)) {
+                throw new ValidacaoError("O id informado é inválido");
+            }
+
+            const veiculo = this.service.atualizar(id, req.body);
+
+            res.status(200).json(veiculo);
+        } catch (erro) {
+            next(erro);
+        }
+    };
+
+    // DELETE /veiculos/:id
+    excluir = (req, res, next) => {
+        try {
+            const id = Number(req.params.id);
+
+            if (isNaN(id)) {
+                throw new ValidacaoError("O id informado é inválido");
+            }
+
+           this.service.excluir(id);
+
+            res.status(204).send()
+
+        } catch (erro) {
+            next(erro);
+        }
+    };
+
+
 }
 
 module.exports = VeiculoController;
