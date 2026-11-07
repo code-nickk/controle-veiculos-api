@@ -1,4 +1,4 @@
-const ValidacaoError = require("../errors/ValidacaoError");
+const converterId = require("../utils/converterId");
 
 // Controller dos veículos: recebe a requisição HTTP, chama o service e devolve a resposta. Não contém regra de negócio (ela fica no service).
 class VeiculoController {
@@ -23,12 +23,7 @@ class VeiculoController {
     // GET /veiculos/:id
     buscarPorId = (req, res, next) => {
         try {
-            const id = Number(req.params.id);
-
-            if (isNaN(id)) {
-                throw new ValidacaoError("O id informado é inválido");
-            }
-
+            const id = converterId(req.params.id);
             const veiculo = this.service.buscarPorId(id);
 
             res.status(200).json(veiculo);
@@ -53,12 +48,7 @@ class VeiculoController {
     // PUT /veiculos/:id
     atualizar = (req, res, next) => {
         try {
-            const id = Number(req.params.id);
-
-            if (isNaN(id)) {
-                throw new ValidacaoError("O id informado é inválido");
-            }
-
+            const id = converterId(req.params.id);
             const veiculo = this.service.atualizar(id, req.body);
 
             res.status(200).json(veiculo);
@@ -70,15 +60,11 @@ class VeiculoController {
     // DELETE /veiculos/:id
     excluir = (req, res, next) => {
         try {
-            const id = Number(req.params.id);
-
-            if (isNaN(id)) {
-                throw new ValidacaoError("O id informado é inválido");
-            }
+            const id = converterId(req.params.id);
 
            this.service.excluir(id);
 
-            res.status(204).send()
+            res.status(204).send();
 
         } catch (erro) {
             next(erro);
