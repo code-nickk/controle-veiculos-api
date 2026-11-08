@@ -9,6 +9,10 @@ function errorHandler(erro, req, res, next) {
         : erro.message;
     console.log("mensagem:", mensagem); 
     res.status(status).json({ erro: mensagem });
+
+    if (status === 500) {
+    console.error(erro);
+}
 }
 
 module.exports = errorHandler;

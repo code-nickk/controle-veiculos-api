@@ -4,8 +4,8 @@ const ValidacaoError = require("../errors/ValidacaoError");
 const ConflitoError = require("../errors/ConflitoError");
 const textoValido = require("../utils/textoValido");
 
-// Regras de negócio do cadastro de motoristas
-// Recebe o repository pelo construtor (injeção de dependência)
+// Gerenciar as regras de negócio dos motoristas.
+// O primeiro nome pode se repetir, mas o nome completo não pode ser duplicado.
 
 class MotoristaService {
 
@@ -13,9 +13,8 @@ class MotoristaService {
         this.repository = repository;
     }
 
-    // Lista os motoristas.
-    // Os filtros ignoram maiúsculas/minúsculas.
-    // Buscar parcial funciona, se buscarem ana aparecerar também mariana
+        // Listar motoristas, permitindo filtros por nome.
+    // Permite busca parcial ignorando maiúsculas e minúsculas.  
     listar(filtros = {}) {
         let motoristas = this.repository.listar();
 
@@ -51,7 +50,9 @@ class MotoristaService {
         return novoMotorista;
     }
 
-    // Valida se foi colocado o nome e sobrenome, barra nomes duplicados
+    // Validar o nome e impedir duplicidade.
+    // O idAtual identifica o motorista que está sendo atualizado,
+    // evitando que ele seja considerado duplicado de si mesmo.
     validarNome(nome, idAtual) {
         if (!textoValido(nome)) {
          throw new ValidacaoError("O nome é obrigatório");

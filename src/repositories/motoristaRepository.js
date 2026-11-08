@@ -19,7 +19,7 @@ class MotoristaRepository {
         return motorista;
     }
 
-    // Gera uma lista com todos os motoristas
+    // Devolver a lista de todos os motoristas cadastrados.
     listar() {
         return this.motoristas;
     }
@@ -31,7 +31,8 @@ class MotoristaRepository {
         );
     }
 
-    // Busca um motorista pelo nome
+    // Buscar um motorista pelo nome completo, ignorando diferenças
+    // entre letras maiúsculas e minúsculas.
     buscarPorNome(nome) {
         return this.motoristas.find(
             motorista => motorista.nome.trim().toLowerCase() === nome.trim().toLowerCase()

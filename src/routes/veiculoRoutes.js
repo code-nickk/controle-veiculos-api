@@ -1,20 +1,15 @@
 const express = require("express");
-const VeiculoRepository = require("../repositories/veiculoRepository");
-const VeiculoService = require("../services/veiculoService");
-const VeiculoController = require("../controllers/veiculoController");
 
 const router = express.Router();
 
 // Monta a cadeia de dependências uma única vez:
 // repository -> service -> controller
-const repository = new VeiculoRepository();
-const service = new VeiculoService(repository);
-const controller = new VeiculoController(service);
+const { veiculoController } = require("../container");
 
-router.get("/", controller.listar);
-router.get("/:id", controller.buscarPorId);
-router.post("/", controller.criar);
-router.put("/:id", controller.atualizar);
-router.delete("/:id", controller.excluir);
+router.get("/", veiculoController.listar);
+router.get("/:id", veiculoController.buscarPorId);
+router.post("/", veiculoController.criar);
+router.put("/:id", veiculoController.atualizar);
+router.delete("/:id", veiculoController.excluir);
 
 module.exports = router;

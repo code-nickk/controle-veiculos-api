@@ -1,7 +1,7 @@
 const converterId = require("../utils/converterId");
 
 // Controller dos motoristas: recebe a requisição HTTP, chama o service e devolve a resposta. Não contém regra de negócio (ela fica no service).
-class MotoristaController {
+ class MotoristaController {
 
     constructor(service) {
         this.service = service;

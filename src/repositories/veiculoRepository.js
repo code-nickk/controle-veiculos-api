@@ -7,19 +7,19 @@ class VeiculoRepository {
         this.proximoId = 1;
     }
 
-    // Gera um ID sequencial para cada cadastro de veiculo
+    // Gera um ID sequencial para cada cadastro de veículo
     gerarId() {
         return this.proximoId++;
     }
 
-    // Salva um veiculo
+    // Salva um veículo
     salvar(veiculo) {
         this.veiculos.push(veiculo);
 
         return veiculo;
     }
 
-    // Gera uma lista de veiculos por id
+    // Gera uma lista com todos os veículos
     listar() {
         return this.veiculos;
     }
@@ -31,15 +31,14 @@ class VeiculoRepository {
         );
     }
 
-    // Busca um veículo pela placa 
-    
+    // Busca um veículo pela placa ja padronizada (abc1234)    
     buscarPorPlaca(placa) {
         return this.veiculos.find(
             veiculo => veiculo.placa === placa
         );
     }
 
-    // Excluir um veiculo com base no seu id da lista
+    // Excluir um veículo com base no seu id da lista
     excluir(id) {
      this.veiculos = this.veiculos.filter(veiculo => veiculo.id !== id);
     }
