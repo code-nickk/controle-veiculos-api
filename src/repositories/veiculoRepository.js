@@ -7,7 +7,7 @@ class VeiculoRepository {
         this.proximoId = 1;
     }
 
-    // Gera um ID sequencial para cada cadastro
+    // Gera um ID sequencial para cada cadastro de veiculo
     gerarId() {
         return this.proximoId++;
     }

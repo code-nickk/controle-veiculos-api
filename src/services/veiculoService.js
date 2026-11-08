@@ -2,6 +2,7 @@ const Veiculo = require("../models/veiculo");
 const NaoEncontradoError = require("../errors/NaoEncontradoError");
 const ValidacaoError = require("../errors/ValidacaoError");
 const ConflitoError = require("../errors/ConflitoError");
+const textoValido = require("../utils/textoValido");
 
 // Regras de negócio do cadastro de veículos.
 // Recebe o repository pelo construtor (injeção de dependência),
@@ -12,11 +13,7 @@ class VeiculoService {
         this.repository = repository;
     }
 
-    // Verifica se o valor é um texto com conteúdo (não vazio e não só espaços)
-    textoValido(valor) {
-        return typeof valor === "string" && valor.trim() !== "";
-    }
-
+   
     // Lista os veículos, com filtros opcionais por cor e/ou marca.
     // Os filtros ignoram maiúsculas/minúsculas e podem ser combinados.
     listar(filtros = {}) {
@@ -58,15 +55,15 @@ class VeiculoService {
     criar(dados = {}) {
 
         // Valida os campos obrigatórios
-        if (!this.textoValido(dados.placa)) {
+        if (!textoValido(dados.placa)) {
             throw new ValidacaoError("A placa é obrigatória");
         }
 
-        if (!this.textoValido(dados.cor)) {
+        if (!textoValido(dados.cor)) {
             throw new ValidacaoError("A cor é obrigatória");
         }
 
-        if (!this.textoValido(dados.marca)) {
+        if (!textoValido(dados.marca)) {
             throw new ValidacaoError("A marca é obrigatória");
         }
 
@@ -104,12 +101,12 @@ class VeiculoService {
         const veiculo = this.buscarPorId(id);
 
         // Atualiza a cor somente se ela foi enviada
-        if (this.textoValido(dados.cor)) {
+        if (textoValido(dados.cor)) {
             veiculo.cor = dados.cor.trim();
         }
 
         // Atualiza a marca somente se ela foi enviada
-        if (this.textoValido(dados.marca)) {
+        if (textoValido(dados.marca)) {
             veiculo.marca = dados.marca.trim();
         }
 
