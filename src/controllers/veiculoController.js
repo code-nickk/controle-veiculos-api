@@ -62,7 +62,7 @@ class VeiculoController {
         try {
             const id = converterId(req.params.id);
 
-           this.service.excluir(id);
+            this.service.excluir(id);
 
             res.status(204).send();
 

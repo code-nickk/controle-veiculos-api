@@ -1,5 +1,6 @@
 const express = require('express');
 const veiculoRoutes = require('./routes/veiculoRoutes');
+const motoristaRoutes = require('./routes/motoristaRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/veiculos', veiculoRoutes);
+app.use('/motoristas', motoristaRoutes);
 app.use(errorHandler);
 
 module.exports = app;
