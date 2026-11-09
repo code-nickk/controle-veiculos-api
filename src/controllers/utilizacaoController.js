@@ -8,7 +8,7 @@ class UtilizacaoController {
     }
 
     // POST /utilizacoes
-    // Incia uma utilização, travando um motorista e um veículo de serem incluidos em outra utilização
+    // Inicia a utilização se o motorista e o veículo existirem e estiverem livres.
     iniciar = (req, res, next) => {
         try {
             const utilizacao = this.service.iniciar(req.body);
@@ -35,7 +35,7 @@ class UtilizacaoController {
     };
 
     // GET /utilizacoes
-    // Mostra uma lista com a utilização (Nome do motorista, veiculo e informações da utilização)
+    // Mostra uma lista com a utilização (Nome do motorista, veículo e informações da utilização)
     listar = (req, res, next) => {
         try {
             const utilizacoes = this.service.listar();

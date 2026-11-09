@@ -12,7 +12,6 @@ class VeiculoService {
     constructor(repository) {
         this.repository = repository;
     }
-
    
     // Lista os veículos, com filtros opcionais por cor e/ou marca.
     // Os filtros ignoram maiúsculas/minúsculas e podem ser combinados.
@@ -114,7 +113,7 @@ class VeiculoService {
         return veiculo;
     }
 
-    // Excluir um veículo; lança erro 404 se ele não existir
+    // Exclui um veículo; lança erro 404 se ele não existir
     excluir(id) {
         this.buscarPorId(id);
         this.repository.excluir(id);

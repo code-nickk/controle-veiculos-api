@@ -19,7 +19,7 @@ class VeiculoRepository {
         return veiculo;
     }
 
-    // Gera uma lista com todos os veículos
+    // Devolve uma lista com todos os veículos
     listar() {
         return this.veiculos;
     }
@@ -31,14 +31,14 @@ class VeiculoRepository {
         );
     }
 
-    // Busca um veículo pela placa ja padronizada (abc1234)    
+    // Busca um veículo pela placa já padronizada (ABC1234)
     buscarPorPlaca(placa) {
         return this.veiculos.find(
             veiculo => veiculo.placa === placa
         );
     }
 
-    // Excluir um veículo com base no seu id da lista
+    // Excluir um veículo com base no seu id da lista. Não avisa se o id não existir, o service já verifica isso antes.
     excluir(id) {
      this.veiculos = this.veiculos.filter(veiculo => veiculo.id !== id);
     }

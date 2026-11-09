@@ -16,7 +16,7 @@ class UtilizacaoService {
         this.motoristaService = motoristaService;
     }
 
-    // Iniciar uma utilização, verificando se o motorista e o veículo existem
+    // Inicia uma utilização, verificando se o motorista e o veículo existem
     // e garantindo que nenhum dos dois esteja envolvido em outra utilização ativa.
     iniciar(dados = {}) {
         const motoristaId = converterId(dados.motoristaId);
@@ -48,7 +48,7 @@ class UtilizacaoService {
         return utilizacao;
     }
 
-    // Buscar uma utilização pelo seu id
+    // Busca uma utilização pelo seu id
     buscarPorId(id) {
         const utilizacao = this.repository.buscarPorId(id);
 
@@ -59,7 +59,7 @@ class UtilizacaoService {
         return utilizacao;
     }
 
-    // Finalizar uma utilização pelo seu id, lança erro 409 caso a utilização já tenha sido finalizada
+    // Finaliza uma utilização pelo seu id, lança erro 409 caso a utilização já tenha sido finalizada
     finalizar(id) {
         const utilizacao = this.buscarPorId(id);
 
@@ -72,7 +72,7 @@ class UtilizacaoService {
         return utilizacao;
     }
 
-    // Listar as utilizações com os dados relacionados de motoristas e veículos.
+    // Lista as utilizações com os dados relacionados de motoristas e veículos.
     listar() {
         return this.repository.listar().map(utilizacao => {
             const motorista = this.motoristaService.buscarPorId(utilizacao.motoristaId);

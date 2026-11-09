@@ -4,7 +4,7 @@ const ValidacaoError = require("../errors/ValidacaoError");
 const ConflitoError = require("../errors/ConflitoError");
 const textoValido = require("../utils/textoValido");
 
-// Gerenciar as regras de negócio dos motoristas.
+// Gerencia as regras de negócio dos motoristas.
 // O primeiro nome pode se repetir, mas o nome completo não pode ser duplicado.
 
 class MotoristaService {
@@ -13,7 +13,7 @@ class MotoristaService {
         this.repository = repository;
     }
 
-        // Listar motoristas, permitindo filtros por nome.
+    // Lista motoristas, permitindo filtros por nome.
     // Permite busca parcial ignorando maiúsculas e minúsculas.  
     listar(filtros = {}) {
         let motoristas = this.repository.listar();
@@ -50,22 +50,22 @@ class MotoristaService {
         return novoMotorista;
     }
 
-    // Validar o nome e impedir duplicidade.
+    // Valida o nome e impedir duplicidade.
     // O idAtual identifica o motorista que está sendo atualizado,
     // evitando que ele seja considerado duplicado de si mesmo.
     validarNome(nome, idAtual) {
         if (!textoValido(nome)) {
-         throw new ValidacaoError("O nome é obrigatório");
+            throw new ValidacaoError("O nome é obrigatório");
         }
 
         if (nome.trim().split(/\s+/).length < 2) {
-          throw new ValidacaoError("Informe nome e sobrenome");
+            throw new ValidacaoError("Informe nome e sobrenome");
         }
 
-      const existente = this.repository.buscarPorNome(nome.trim());
+        const existente = this.repository.buscarPorNome(nome.trim());
 
-       if (existente && existente.id !== idAtual) {
-          throw new ConflitoError("Já existe um motorista com esse nome completo");
+        if (existente && existente.id !== idAtual) {
+            throw new ConflitoError("Já existe um motorista com esse nome completo");
         }
     }
 
@@ -80,7 +80,7 @@ class MotoristaService {
         return motorista;
     }
 
-    // Excluir um motorista; lança erro 404 se ele não existir
+    // Exclui um motorista; lança erro 404 se ele não existir
     excluir(id) {
         this.buscarPorId(id);
         this.repository.excluir(id);
