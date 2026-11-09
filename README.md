@@ -164,7 +164,7 @@ Todos os erros seguem o formato `{ "erro": "mensagem" }`.
 | 400 | Dados inválidos ou obrigatórios ausentes (ex.: ID inválido, nome vazio ou motivo não informado). |
 | 404 | Recurso não encontrado (ex.: veículo, motorista ou utilização inexistente). |
 | 409 | Conflito com uma regra de negócio (ex.: placa duplicada, veículo ocupado ou motorista já utilizando outro veículo).|
-| 500 | Inesperado (a mensagem real é registrada só no log do servidor) |
+| 500 | Erro inesperado (a mensagem real é registrada só no log do servidor) |
 
 ## Regras de negócio
 
