@@ -1,8 +1,8 @@
 {
-  "name": "projeto-controle-carros",
+  "name": "controle-veiculos-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API REST para controlar a utilização dos automóveis de uma empresa",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "jest"
